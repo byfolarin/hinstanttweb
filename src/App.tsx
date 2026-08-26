@@ -6,7 +6,6 @@ import { Manifesto } from "./components/sections/Manifesto"
 import { Trust } from "./components/sections/Trust"
 import { Platform } from "./components/sections/Platform"
 import { Testimonials } from "./components/sections/Testimonials"
-import { Personas } from "./components/sections/Personas"
 import { Security } from "./components/sections/Security"
 import { GradientBridge } from "./components/sections/GradientBridge"
 
@@ -21,7 +20,6 @@ export default function App() {
         <Trust />
         <Platform />
         <Testimonials />
-        <Personas />
         <Security />
         <GradientBridge />
       </main>

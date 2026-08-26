@@ -182,25 +182,25 @@ export const platform = {
 }
 
 export const testimonials = {
-  heading: "The agents working inside Hinstantt",
+  heading: "Operational intelligence, embedded across Hinstantt.",
   items: [
     {
-      quote: "Forecasts your cash position and flags shortfalls daily.",
-      name: "Treasury agent",
-      role: "Runs inside Treasury",
-      company: "Hinstantt",
+      quote: "Monitors liquidity across accounts, maintains a rolling cash forecast, and surfaces funding risks before they become constraints.",
+      name: "Treasury operations",
+      role: "Liquidity and forecasting",
+      company: "Continuous oversight",
     },
     {
-      quote: "Codes receipts and checks them against policy on submission.",
-      name: "Expense agent",
-      role: "Runs inside Expense",
-      company: "Hinstantt",
+      quote: "Classifies receipts, validates each transaction against policy, and routes exceptions to the appropriate reviewer with full context.",
+      name: "Expense operations",
+      role: "Policy and controls",
+      company: "Approval aware",
     },
     {
-      quote: "Runs the three-way match and flags any mismatch.",
-      name: "Procurement agent",
-      role: "Runs inside Procurement",
-      company: "Hinstantt",
+      quote: "Matches purchase orders, receipts, and invoices continuously, escalating discrepancies before a payment is released.",
+      name: "Procurement operations",
+      role: "Matching and exceptions",
+      company: "Audit ready",
     },
   ],
 }
