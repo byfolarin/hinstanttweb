@@ -133,15 +133,15 @@ export function LogoWall() {
           </div>
         </div>
         <div className="pointer-events-none absolute inset-y-0 inset-x-0 z-30 mx-auto max-w-[1500px]">
-          <div ref={productHeaderRef} className="absolute left-[5%] top-[6%] text-white opacity-0 will-change-transform">
+          <div ref={productHeaderRef} className="absolute left-[5%] top-[5%] z-40 w-[90%] text-white opacity-0 will-change-transform">
             <div className="inline-flex items-center gap-2 border border-white px-2 py-1"><span className="size-1.5 bg-white" /><span className="text-[10px] font-semibold tracking-[.14em]">WHY HINSTANTT</span></div>
-            <h2 className="mt-4 max-w-[600px] font-display text-[clamp(2.4rem,4.5vw,4.8rem)] leading-[.94] tracking-[-.055em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
+            <h2 className="mt-4 max-w-[900px] font-display text-[clamp(2.2rem,4vw,4.2rem)] leading-[.92] tracking-[-.055em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
           </div>
-          <div ref={productNavRef} className="absolute bottom-[5%] left-[5%] flex h-[48%] w-[18%] min-w-[190px] flex-col justify-center text-white opacity-0 will-change-transform">
+          <div ref={productNavRef} className="absolute left-[5%] top-[32%] flex h-[48%] w-[18%] min-w-[190px] flex-col justify-start text-white opacity-0 will-change-transform">
             {productScenes.map((item, index) => <span key={item.label} className={`flex items-center gap-3 border-b border-white/14 p-2.5 text-[10px] font-semibold tracking-[.1em] last:border-b-0 ${activeProduct === index ? "bg-white/[.05] text-white" : "text-white/35"}`}><b className={`grid size-6 place-items-center rounded-sm font-medium ${activeProduct === index ? "bg-[#637cf2] text-white" : "bg-white/[.04]"}`}>{item.number}</b>{item.label}</span>)}
           </div>
-          <div ref={productCardRef} className="absolute bottom-[5%] left-[25%] right-[5%] h-[48%] overflow-hidden opacity-0" />
-          <div ref={productCopyRef} className="absolute bottom-[10%] left-[66%] w-[25%] text-white opacity-0 will-change-transform">
+          <div ref={productCardRef} className="absolute left-[25%] right-[5%] top-[32%] h-[48%] overflow-hidden opacity-0" />
+          <div ref={productCopyRef} className="absolute left-[66%] top-[32%] w-[25%] text-white opacity-0 will-change-transform">
             <div className="grid size-7 place-items-center rounded-sm bg-white/[.08] text-xs text-white/65">{productScenes[activeProduct].number}</div>
             <h3 className="mt-3 font-display text-[clamp(1.6rem,2.4vw,2.2rem)] leading-tight tracking-[-.035em]">{productScenes[activeProduct].title}</h3>
             <p className="mt-4 text-sm leading-relaxed text-white/64">{productScenes[activeProduct].body}</p>

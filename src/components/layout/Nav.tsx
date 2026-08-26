@@ -16,7 +16,7 @@ import {
   UserGroupIcon,
   Wallet02Icon,
 } from "@hugeicons/core-free-icons"
-import logoDesign from "/Users/folarinfolarin/Downloads/logo design (2).svg"
+import logoDesign from "../../assets/logo-mark.svg"
 import { brand, nav } from "../../content/site"
 
 const navIcons = {
