@@ -1,7 +1,7 @@
 import { Container } from "../ui/Container"
 import { brand, footer } from "../../content/site"
 import logo from "../../assets/hinstanttlogo.png"
-import logoType from "/Users/folarinfolarin/Downloads/logo design (2).svg"
+import logoType from "../../assets/logo-mark.svg"
 
 export function Footer() {
   return (

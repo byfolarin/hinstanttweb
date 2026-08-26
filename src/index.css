@@ -236,6 +236,15 @@
   to { transform: translate3d(12%, -8%, 0) scale(1.22); opacity: .72; }
 }
 
+.gradient-tablet {
+  animation: gradientTabletFloat 7s ease-in-out infinite alternate;
+}
+
+@keyframes gradientTabletFloat {
+  from { margin-top: 8px; }
+  to { margin-top: -8px; }
+}
+
 @keyframes dashboardFloatDesktop {
   0%, 100% { transform: translate3d(-50%, 0, 0); }
   50% { transform: translate3d(-50%, -10px, 0); }
