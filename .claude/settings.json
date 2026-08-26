@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:higgsfield.ai)",
+      "Bash(claude mcp *)"
+    ]
+  }
+}
