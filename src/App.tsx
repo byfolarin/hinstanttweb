@@ -8,8 +8,7 @@ import { Platform } from "./components/sections/Platform"
 import { Testimonials } from "./components/sections/Testimonials"
 import { Personas } from "./components/sections/Personas"
 import { Security } from "./components/sections/Security"
-import { Ratings } from "./components/sections/Ratings"
-import { DemoForm } from "./components/sections/DemoForm"
+import { GradientBridge } from "./components/sections/GradientBridge"
 
 export default function App() {
   return (
@@ -24,8 +23,7 @@ export default function App() {
         <Testimonials />
         <Personas />
         <Security />
-        <Ratings />
-        <DemoForm />
+        <GradientBridge />
       </main>
       <Footer />
     </>

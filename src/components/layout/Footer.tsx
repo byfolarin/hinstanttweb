@@ -1,28 +1,13 @@
 import { Container } from "../ui/Container"
 import { brand, footer } from "../../content/site"
 import logo from "../../assets/hinstanttlogo.png"
+import logoType from "/Users/folarinfolarin/Downloads/logo design (2).svg"
 
 export function Footer() {
   return (
     <footer className="overflow-hidden bg-navy text-white">
       <Container>
-        <div className="pt-5 sm:pt-8">
-          <div className="relative overflow-hidden rounded-[28px] bg-cream px-6 py-10 text-navy sm:rounded-[36px] sm:px-10 sm:py-14 lg:px-14">
-            <div aria-hidden="true" className="absolute -right-24 -top-40 size-[430px] rounded-full bg-[radial-gradient(circle,#c8d4ff_0%,rgba(200,212,255,.42)_35%,transparent_70%)]" />
-            <div className="relative grid items-end gap-10 lg:grid-cols-[1fr_auto]">
-              <div>
-                <p className="mb-5 text-[10px] font-semibold uppercase tracking-[.18em] text-navy/45">Start operating differently</p>
-                <h2 className="max-w-[820px] font-display text-[clamp(2.8rem,6vw,6.5rem)] leading-[.9] tracking-[-.06em]">Your back office,<br />finally in motion.</h2>
-              </div>
-              <a href="#demo" className="group inline-flex h-14 w-fit items-center gap-7 rounded-full bg-navy pl-7 pr-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-1">
-                Get started
-                <span className="grid size-9 place-items-center rounded-full bg-white text-lg text-navy transition-transform duration-300 group-hover:rotate-45">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid border-b border-white/15 py-14 sm:py-20 lg:grid-cols-[1.05fr_1.95fr]">
+        <div className="grid py-14 sm:py-20 lg:grid-cols-[1.05fr_1.95fr]">
           <div className="border-white/15 pb-12 lg:border-r lg:pb-0 lg:pr-12">
             <a href="#top" className="inline-flex items-center gap-3" aria-label={`${brand.name} home`}>
               <span className="grid size-11 place-items-center overflow-hidden rounded-xl bg-cream"><img src={logo} alt="" className="size-8 object-contain" /></span>
@@ -43,6 +28,10 @@ export function Footer() {
             ))}
           </div>
         </div>
+
+        <a href="#top" aria-label={`${brand.name} home`} className="group flex overflow-hidden border-y border-white/15 py-8 sm:py-12">
+          <img src={logoType} alt={brand.name} className="h-auto w-full brightness-0 invert transition-transform duration-500 group-hover:scale-[1.01]" />
+        </a>
 
         <div className="flex flex-col gap-5 py-7 text-[11px] text-white/38 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {brand.name}. All rights reserved.</p>

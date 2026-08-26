@@ -15,10 +15,16 @@ const images = [
 ]
 
 const productScenes = [
-  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money across 60+ markets from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], imageIndex: 0 },
-  { number: "02", label: "CORPORATE CARDS", title: "Control before the spend", body: "Issue cards in seconds and enforce limits, merchants, and policies at authorization.", points: ["Virtual and physical issuance", "Live limits by person or team", "Receipts captured and coded by AI"], imageIndex: 1 },
+  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money across 60+ markets from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], imageIndex: 1 },
+  { number: "02", label: "CORPORATE CARDS", title: "Control before the spend", body: "Issue cards in seconds and enforce limits, merchants, and policies at authorization.", points: ["Virtual and physical issuance", "Live limits by person or team", "Receipts captured and coded by AI"], imageIndex: 0 },
   { number: "03", label: "ACCOUNTING", title: "A ledger that keeps up", body: "Every transaction is classified, matched, and reconciled while the business is still moving.", points: ["AI-classified transactions", "Continuous three-way matching", "Real-time ERP synchronization"], imageIndex: 3 },
-  { number: "04", label: "REPORTING", title: "Answers, not exports", body: "See cash, spend, revenue, and risk across every entity without rebuilding the report.", points: ["Live multi-entity reporting", "Automatic anomaly detection", "Board-ready views on demand"], imageIndex: 2 },
+  { number: "04", label: "REPORTING", title: "Answers, not exports", body: "See cash, spend, revenue, and risk across every entity without rebuilding the report.", points: ["Live multi-entity reporting", "Automatic anomaly detection", "Board-ready views on demand"], imageIndex: 8 },
+  { number: "05", label: "TREASURY", title: "Liquidity in one view", body: "Manage balances, currencies, yield, and cash positions without switching between banks.", points: ["Real-time cash positions", "Automated liquidity rules", "Yield across idle balances"], imageIndex: 2 },
+  { number: "06", label: "STABLECOIN RAMP", title: "Global rails, built in", body: "Move between fiat and stablecoins through compliant infrastructure designed for business.", points: ["Fast fiat conversion", "Compliant global settlement", "Unified transaction history"], imageIndex: 4 },
+  { number: "07", label: "EXPENSE", title: "Expenses without cleanup", body: "Capture receipts, enforce policy, and reimburse teams while every transaction stays coded.", points: ["Automatic receipt capture", "Policy checks in real time", "Instant reimbursements"], imageIndex: 5 },
+  { number: "08", label: "PROCUREMENT", title: "Buying with control", body: "Run requests, approvals, purchase orders, and vendor payments through one clear workflow.", points: ["Configurable approvals", "Purchase order matching", "Vendor payment controls"], imageIndex: 6 },
+  { number: "09", label: "INVOICING", title: "Revenue that runs itself", body: "Create invoices, automate billing, and collect customer payments without manual follow-up.", points: ["Automated billing cycles", "Smart payment reminders", "Live receivables tracking"], imageIndex: 7 },
+  { number: "10", label: "AI FINANCE", title: "Work handled for you", body: "Deploy an AI agent inside every module to complete repetitive financial operations continuously.", points: ["Agents across every module", "Approval-aware automation", "Complete operational visibility"], imageIndex: 9 },
 ]
 
 export function LogoWall() {
@@ -40,17 +46,17 @@ export function LogoWall() {
       const rect = sectionRef.current.getBoundingClientRect()
       const travel = Math.max(rect.height - window.innerHeight, 1)
       const progress = Math.min(1, Math.max(0, -rect.top / travel))
-      const rawSplit = Math.min(1, progress / .38)
+      const rawSplit = Math.min(1, progress / .18)
       const split = rawSplit * rawSplit * (3 - 2 * rawSplit)
-      const rawArrange = Math.min(1, Math.max(0, (progress - .44) / .22))
+      const rawArrange = Math.min(1, Math.max(0, (progress - .2) / .1))
       const arrange = rawArrange * rawArrange * (3 - 2 * rawArrange)
       const grid = 0
-      const rawProduct = Math.min(1, Math.max(0, (progress - .68) / .16))
+      const rawProduct = Math.min(1, Math.max(0, (progress - .3) / .08))
       const product = rawProduct * rawProduct * (3 - 2 * rawProduct)
-      const rawProductReveal = Math.min(1, Math.max(0, (progress - .76) / .12))
+      const rawProductReveal = Math.min(1, Math.max(0, (progress - .34) / .06))
       const productReveal = rawProductReveal * rawProductReveal * (3 - 2 * rawProductReveal)
-      const productSceneProgress = Math.min(1, Math.max(0, (progress - .68) / .32))
-      const activeIndex = Math.min(3, Math.floor(productSceneProgress * 4))
+      const productSceneProgress = Math.min(1, Math.max(0, (progress - .38) / .58))
+      const activeIndex = Math.min(productScenes.length - 1, Math.floor(productSceneProgress * productScenes.length))
       setActiveProduct(activeIndex)
       const activeImageIndex = productScenes[activeIndex].imageIndex
       const centered = Math.max(0, Math.min(.12, progress - .38))
@@ -80,9 +86,10 @@ export function LogoWall() {
         const gridResolvedScale = arrangedScale + (gridScale - arrangedScale) * grid
         const isPaymentImage = index === activeImageIndex
         const visualWidth = productCardRect.width * .56
-        const productX = productCardRect.left + visualWidth / 2 - (image.offsetLeft + image.offsetWidth / 2)
-        const productY = productCardRect.top + productCardRect.height / 2 - (image.offsetTop + image.offsetHeight / 2)
         const productScale = Math.min(visualWidth / image.offsetWidth, productCardRect.height / image.offsetHeight)
+        const renderedImageWidth = image.offsetWidth * productScale
+        const productX = productCardRect.left + renderedImageWidth / 2 - (image.offsetLeft + image.offsetWidth / 2)
+        const productY = productCardRect.top + (image.offsetHeight * productScale) / 2 - (image.offsetTop + image.offsetHeight / 2)
         const x = gridResolvedX + (productX - gridResolvedX) * product
         const y = gridResolvedY + (productY - gridResolvedY) * product
         const scale = gridResolvedScale + ((isPaymentImage ? productScale : gridResolvedScale) - gridResolvedScale) * product
@@ -93,8 +100,8 @@ export function LogoWall() {
         image.style.setProperty("--label-opacity", "0")
       })
 
-      const copyProgress = Math.min(1, Math.max(0, (progress - .24) / .28))
-      const copyExit = Math.min(1, Math.max(0, (progress - .42) / .16))
+      const copyProgress = Math.min(1, Math.max(0, (progress - .06) / .08))
+      const copyExit = Math.min(1, Math.max(0, (progress - .18) / .08))
       copyRef.current.style.opacity = `${copyProgress * (1 - copyExit)}`
       copyRef.current.style.transform = `translate3d(0, ${(1 - copyProgress) * 34 - copyExit * 70}px, 0)`
       productCopyRef.current.style.opacity = `${productReveal}`
@@ -117,7 +124,7 @@ export function LogoWall() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="product" className="relative h-[520vh] bg-white text-ink">
+    <section ref={sectionRef} id="product" className="relative h-[1100vh] bg-white text-ink">
       <div ref={stageRef} className="sticky top-0 h-screen overflow-hidden bg-white will-change-[background-color]">
         {images.map((image, index) => (
           <div key={`${image.src}-${index}`} ref={(node) => { imageRefs.current[index] = node }} className={`second-section-image absolute h-[150px] w-[210px] overflow-hidden rounded-xl will-change-transform sm:h-[170px] sm:w-[240px] ${image.className}`}>
@@ -133,21 +140,31 @@ export function LogoWall() {
           </div>
         </div>
         <div className="pointer-events-none absolute inset-y-0 inset-x-0 z-30 mx-auto max-w-[1500px]">
-          <div ref={productHeaderRef} className="absolute left-[5%] top-[5%] z-40 w-[90%] text-white opacity-0 will-change-transform">
+          <div ref={productHeaderRef} className="absolute inset-x-0 top-[13%] z-40 flex flex-col items-center px-6 text-center text-white opacity-0 will-change-transform">
             <div className="inline-flex items-center gap-2 border border-white px-2 py-1"><span className="size-1.5 bg-white" /><span className="text-[10px] font-semibold tracking-[.14em]">WHY HINSTANTT</span></div>
             <h2 className="mt-4 max-w-[900px] font-display text-[clamp(2.2rem,4vw,4.2rem)] leading-[.92] tracking-[-.055em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
           </div>
-          <div ref={productNavRef} className="absolute left-[5%] top-[32%] flex h-[48%] w-[18%] min-w-[190px] flex-col justify-start text-white opacity-0 will-change-transform">
-            {productScenes.map((item, index) => <span key={item.label} className={`flex items-center gap-3 border-b border-white/14 p-2.5 text-[10px] font-semibold tracking-[.1em] last:border-b-0 ${activeProduct === index ? "bg-white/[.05] text-white" : "text-white/35"}`}><b className={`grid size-6 place-items-center rounded-sm font-medium ${activeProduct === index ? "bg-[#637cf2] text-white" : "bg-white/[.04]"}`}>{item.number}</b>{item.label}</span>)}
-          </div>
-          <div ref={productCardRef} className="absolute left-[25%] right-[5%] top-[32%] h-[48%] overflow-hidden opacity-0" />
-          <div ref={productCopyRef} className="absolute left-[66%] top-[32%] w-[25%] text-white opacity-0 will-change-transform">
+          <div ref={productCardRef} className="absolute left-[25%] right-[5%] top-[39%] h-[48%] overflow-hidden opacity-0" />
+          <div ref={productCopyRef} className="absolute left-[71%] top-[39%] w-[20%] text-white opacity-0 will-change-transform">
             <div className="grid size-7 place-items-center rounded-sm bg-white/[.08] text-xs text-white/65">{productScenes[activeProduct].number}</div>
             <h3 className="mt-3 font-display text-[clamp(1.6rem,2.4vw,2.2rem)] leading-tight tracking-[-.035em]">{productScenes[activeProduct].title}</h3>
             <p className="mt-4 text-sm leading-relaxed text-white/64">{productScenes[activeProduct].body}</p>
             <ul className="relative mt-6 space-y-4 before:absolute before:bottom-0 before:left-0 before:top-0 before:w-[3px] before:rounded-full before:bg-white/20">
               {productScenes[activeProduct].points.map((point) => <li key={point} className="relative flex gap-4 text-sm leading-snug text-white/80"><span className="relative z-10 mt-0.5 h-4 w-[3px] shrink-0 rounded-full bg-white/60" />{point}</li>)}
             </ul>
+          </div>
+          <div
+            ref={productNavRef}
+            aria-hidden="true"
+            className="absolute left-[2%] top-[39%] flex w-[20%] flex-col gap-6 text-white opacity-0 will-change-transform"
+            style={{ opacity: activeProduct >= 0 ? undefined : 0 }}
+          >
+            {productScenes.map((item, index) => (
+              <div key={item.number} className="flex items-center gap-2">
+                <span className={`block origin-left transition-all duration-500 ${activeProduct === index ? "h-[2px] w-7 bg-white" : "h-px w-3 bg-white/25"}`} />
+                <span className={`text-[11px] font-semibold tracking-[.075em] transition-all duration-300 ${activeProduct === index ? "translate-x-1 text-white" : "text-white/35"}`}>{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

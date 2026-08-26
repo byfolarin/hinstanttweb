@@ -179,6 +179,63 @@
   50% { transform: translate3d(3%, -1%, 0) scale(1.13); }
 }
 
+.gradient-bridge-orb,
+.gradient-bridge-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(54px);
+  will-change: transform;
+}
+
+.gradient-bridge-orb-a {
+  top: -55%;
+  left: -8%;
+  width: 72%;
+  height: 125%;
+  background: radial-gradient(circle, rgba(84, 111, 255, .95) 0%, rgba(84, 111, 255, .32) 45%, transparent 72%);
+  animation: gradientBridgeA 12s ease-in-out infinite alternate;
+}
+
+.gradient-bridge-orb-b {
+  right: -12%;
+  bottom: -70%;
+  width: 78%;
+  height: 145%;
+  background: radial-gradient(circle, rgba(255, 112, 54, .9) 0%, rgba(255, 112, 54, .28) 46%, transparent 72%);
+  animation: gradientBridgeB 14s ease-in-out infinite alternate;
+}
+
+.gradient-bridge-orb-c {
+  top: 4%;
+  left: 38%;
+  width: 48%;
+  height: 105%;
+  background: radial-gradient(circle, rgba(200, 153, 255, .8) 0%, rgba(200, 153, 255, .22) 48%, transparent 72%);
+  animation: gradientBridgeC 10s ease-in-out infinite alternate;
+}
+
+.gradient-bridge-glow {
+  inset: 18% 20%;
+  background: radial-gradient(circle, rgba(255,255,255,.5) 0%, rgba(255,255,255,.08) 35%, transparent 68%);
+  animation: gradientBridgeGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradientBridgeA {
+  to { transform: translate3d(18%, 22%, 0) scale(1.16); }
+}
+
+@keyframes gradientBridgeB {
+  to { transform: translate3d(-20%, -18%, 0) scale(1.12); }
+}
+
+@keyframes gradientBridgeC {
+  to { transform: translate3d(-16%, 8%, 0) scale(.9); }
+}
+
+@keyframes gradientBridgeGlow {
+  to { transform: translate3d(12%, -8%, 0) scale(1.22); opacity: .72; }
+}
+
 @keyframes dashboardFloatDesktop {
   0%, 100% { transform: translate3d(-50%, 0, 0); }
   50% { transform: translate3d(-50%, -10px, 0); }
