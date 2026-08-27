@@ -28,7 +28,7 @@ export function GlassMotion() {
               clipPath="url(#hinstantt-business-mark)"
             />
           </svg>
-          <strong className="absolute z-10 whitespace-nowrap font-display text-[clamp(3rem,6.5vw,6rem)] font-medium leading-none tracking-[-0.065em] text-navy">
+          <strong className="absolute z-10 whitespace-nowrap font-display text-[clamp(3rem,6.5vw,6rem)] font-medium leading-none tracking-[-0.065em] text-white [text-shadow:0_2px_3px_rgba(17,25,39,0.9),0_8px_24px_rgba(17,25,39,0.45)]">
             12,000+
           </strong>
         </div>
