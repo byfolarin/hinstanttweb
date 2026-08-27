@@ -16,8 +16,8 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <LogoWall />
         <GlassMotion />
+        <LogoWall />
         <Manifesto />
         <Trust />
         <Platform />
