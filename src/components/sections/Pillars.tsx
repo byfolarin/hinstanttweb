@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 const products = [
-  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money across 60+ markets from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], visual: "payments" },
+  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], visual: "payments" },
   { number: "02", label: "CORPORATE CARDS", title: "Control before the spend", body: "Issue cards in seconds and enforce limits, merchants, and policies at authorization.", points: ["Virtual and physical issuance", "Live limits by person or team", "Receipts captured and coded by AI"], visual: "cards" },
   { number: "03", label: "ACCOUNTING", title: "A ledger that keeps up", body: "Every transaction is classified, matched, and reconciled while the business is still moving.", points: ["AI-classified transactions", "Continuous three-way matching", "Real-time ERP synchronization"], visual: "accounting" },
   { number: "04", label: "REPORTING", title: "Answers, not exports", body: "See cash, spend, revenue, and risk across every entity without rebuilding the report.", points: ["Live multi-entity reporting", "Automatic anomaly detection", "Board-ready views on demand"], visual: "reporting" },

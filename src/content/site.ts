@@ -56,7 +56,7 @@ export const hero = {
   eyebrow: "Global payments running on Hinstantt: 0.00957%",
   headline: ["The operating system", "for global money"],
   body:
-    "Run cards, payments, treasury, and accounting in one place across 60+ markets, with AI agents handling the work in the background.",
+    "Run cards, payments, treasury, and accounting in one place, with AI agents handling the work in the background.",
   primaryCta: "Get started",
   metrics: [
     { value: "$12B+", label: "Annual volume" },
@@ -265,7 +265,7 @@ export const security = {
     },
     {
       code: "10+ licenses",
-      desc: "Regulated coverage across 60+ markets keeps every transfer compliant where it happens.",
+      desc: "Regulated coverage keeps every transfer compliant where it happens.",
     },
   ],
 }

@@ -3,7 +3,7 @@ import { logoWall } from "../../content/site"
 
 const images = [
   { title: "Corporate Cards", description: "Issue virtual and physical cards with real-time limits and controls.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-1.webp", className: "-top-14 left-[14%]", speed: -120 },
-  { title: "Global Payments", description: "Send and receive money across 60+ markets from one account.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-2.webp", className: "-top-20 left-[45%]", speed: 80 },
+  { title: "Global Payments", description: "Send and receive money from one account.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-2.webp", className: "-top-20 left-[45%]", speed: 80 },
   { title: "Treasury", description: "Manage liquidity, currencies, yield, and cash positions in real time.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-3.webp", className: "-top-8 right-[11%]", speed: -70 },
   { title: "Accounting", description: "Reconcile transactions and keep the ledger continuously up to date.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-4.webp", className: "bottom-[2%] left-[18%]", speed: 115 },
   { title: "Stablecoin Ramp", description: "Move between fiat and stablecoins through compliant global rails.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-5.webp", className: "bottom-[-2%] right-[8%]", speed: -95 },
@@ -15,7 +15,7 @@ const images = [
 ]
 
 const productScenes = [
-  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money across 60+ markets from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], imageIndex: 1 },
+  { number: "01", label: "PAYMENTS", title: "Money that moves", body: "Send, receive, and settle money from one operating account.", points: ["Local rails selected automatically", "Multi-currency balances in one view", "Approvals built into every transfer"], imageIndex: 1 },
   { number: "02", label: "CORPORATE CARDS", title: "Control before the spend", body: "Issue cards in seconds and enforce limits, merchants, and policies at authorization.", points: ["Virtual and physical issuance", "Live limits by person or team", "Receipts captured and coded by AI"], imageIndex: 0 },
   { number: "03", label: "ACCOUNTING", title: "A ledger that keeps up", body: "Every transaction is classified, matched, and reconciled while the business is still moving.", points: ["AI-classified transactions", "Continuous three-way matching", "Real-time ERP synchronization"], imageIndex: 3 },
   { number: "04", label: "REPORTING", title: "Answers, not exports", body: "See cash, spend, revenue, and risk across every entity without rebuilding the report.", points: ["Live multi-entity reporting", "Automatic anomaly detection", "Board-ready views on demand"], imageIndex: 8 },
