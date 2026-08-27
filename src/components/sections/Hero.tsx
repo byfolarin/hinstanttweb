@@ -91,23 +91,23 @@ export function Hero() {
       </video>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(7,8,10,.48)_0%,rgba(6,8,12,.56)_52%,rgba(4,6,10,.84)_100%)]" />
 
-      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-5 sm:px-8 lg:px-10">
-        <div className={`hero-copy relative flex flex-1 -translate-y-12 flex-col items-center justify-center pb-12 pt-24 text-center sm:pb-16 lg:-translate-y-16 ${contentVisible ? "hero-copy-active" : ""}`}>
-          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[.16em] text-white/75 sm:text-sm">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-5 sm:px-8 lg:px-28 xl:px-32">
+        <div className={`hero-copy relative flex flex-1 flex-col items-start justify-end pb-20 pt-28 text-left sm:pb-24 lg:pb-28 ${contentVisible ? "hero-copy-active" : ""}`}>
+          <p className="mb-5 text-[13px] font-medium italic tracking-[.04em] text-white/75 sm:text-sm">
             <StaggeredWords text={hero.eyebrow} offset={6} />
           </p>
 
-          <h1 className="max-w-[1100px] text-balance font-display text-[clamp(3.4rem,7.6vw,7.25rem)] font-normal leading-[.9] tracking-[-.055em]">
+          <h1 className="max-w-[980px] text-balance font-display text-[clamp(3.4rem,7.6vw,7.25rem)] font-normal leading-[.9] tracking-[-.055em]">
             {hero.headline.map((line, index) => (
-              <StaggeredWords key={line} text={line} offset={index * 3} className="block" />
+              <StaggeredWords key={line} text={line} offset={index * 3} className="block sm:whitespace-nowrap" />
             ))}
           </h1>
 
-          <p className="mt-7 max-w-[680px] text-balance text-[17px] leading-relaxed text-white/82 sm:text-xl">
+          <p className="mt-7 max-w-[650px] text-balance text-[17px] leading-relaxed text-white/82 sm:text-xl">
             <StaggeredWords text={hero.body} offset={9} />
           </p>
 
-          <div className="hero-actions mt-8 flex flex-col items-center gap-3">
+          <div className="hero-actions mt-8 flex flex-col items-start gap-3">
             <form action="#demo" className="flex h-[58px] w-[min(100%,470px)] items-center rounded-full bg-white p-1.5 pl-6 shadow-[0_12px_40px_rgba(0,0,0,.18)]" onSubmit={(event) => { event.preventDefault(); document.querySelector("#demo")?.scrollIntoView({ behavior: "smooth" }) }}>
               <label htmlFor="hero-work-email" className="sr-only">Work email</label>
               <input id="hero-work-email" name="email" type="email" required autoComplete="email" placeholder="Enter your work email" className="min-w-0 flex-1 bg-transparent text-[15px] text-navy placeholder:text-navy/45 focus:outline-none" />
@@ -118,18 +118,6 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-[calc(100%_-_32px)] max-w-[900px] rounded-t-[28px] bg-white px-4 pb-5 pt-6 text-navy sm:px-8 sm:pb-6 sm:pt-7 lg:px-10">
-          <span aria-hidden="true" className="metric-notch-left absolute -left-3 bottom-0 size-3" />
-          <span aria-hidden="true" className="metric-notch-right absolute -right-3 bottom-0 size-3" />
-          <div className={`hero-metrics grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-4 lg:gap-x-8 ${contentVisible ? "hero-metrics-active" : ""}`}>
-            {hero.metrics.map((metric, index) => (
-              <div key={metric.label} style={{ "--metric-index": index } as CSSProperties} className={`relative text-center lg:text-left ${index > 0 ? "lg:before:absolute lg:before:-left-4 lg:before:top-0 lg:before:h-full lg:before:w-px lg:before:bg-navy/12" : ""}`}>
-                <p className="font-display text-[1.75rem] leading-none tracking-[-.045em] lg:text-[2.15rem]">{metric.value}</p>
-                <p className="mt-2 text-[11px] font-semibold uppercase tracking-[.1em] text-navy/50 lg:text-xs">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
       </div>
     </section>

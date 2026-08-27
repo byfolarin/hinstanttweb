@@ -53,7 +53,7 @@ export const nav = {
 }
 
 export const hero = {
-  eyebrow: "The Finance OS for global operators",
+  eyebrow: "Global payments running on Hinstantt: 0.00957%",
   headline: ["The operating system", "for global money"],
   body:
     "Run cards, payments, treasury, and accounting in one place across 60+ markets, with AI agents handling the work in the background.",
