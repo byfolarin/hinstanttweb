@@ -498,6 +498,23 @@
   .hero-rotating-word { width: 9.7ch; }
 }
 
+.investor-marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
+.investor-marquee-track {
+  animation: investorLogoMarquee 32s linear infinite;
+}
+
+.investor-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes investorLogoMarquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
 .hero-actions {
   filter: blur(10px);
   opacity: 0 !important;

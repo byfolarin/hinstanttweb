@@ -9,6 +9,7 @@ import { Testimonials } from "./components/sections/Testimonials"
 import { Security } from "./components/sections/Security"
 import { GradientBridge } from "./components/sections/GradientBridge"
 import { GlassMotion } from "./components/sections/GlassMotion"
+import { InvestorLogos } from "./components/sections/InvestorLogos"
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <InvestorLogos />
         <GlassMotion />
         <LogoWall />
         <Manifesto />

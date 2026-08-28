@@ -1,0 +1,17 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="cardDetails" maskUnits="userSpaceOnUse" x="20" y="30" width="360" height="240">
+      <rect width="400" height="300" fill="black"/>
+      <rect x="20" y="30" width="360" height="240" rx="30" fill="white"/>
+      <rect x="20" y="86" width="360" height="34" fill="black"/>
+      <rect x="58" y="158" width="74" height="52" rx="10" fill="black"/>
+      <rect x="174" y="169" width="134" height="14" rx="7" fill="black"/>
+      <rect x="174" y="197" width="82" height="14" rx="7" fill="black"/>
+    </mask>
+  </defs>
+  <rect x="20" y="30" width="360" height="240" rx="30" fill="white" fill-opacity="0.98" mask="url(#cardDetails)"/>
+  <rect x="20" y="86" width="360" height="34" fill="white" fill-opacity="0.3"/>
+  <rect x="58" y="158" width="74" height="52" rx="10" fill="white" fill-opacity="0.72"/>
+  <rect x="174" y="169" width="134" height="14" rx="7" fill="white" fill-opacity="0.5"/>
+  <rect x="174" y="197" width="82" height="14" rx="7" fill="white" fill-opacity="0.4"/>
+</svg>

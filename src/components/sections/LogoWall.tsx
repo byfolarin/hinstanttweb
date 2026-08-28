@@ -31,6 +31,7 @@ export function LogoWall() {
   const [activeProduct, setActiveProduct] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const gradientRef = useRef<HTMLDivElement>(null)
   const copyRef = useRef<HTMLDivElement>(null)
   const productCopyRef = useRef<HTMLDivElement>(null)
   const productNavRef = useRef<HTMLDivElement>(null)
@@ -42,7 +43,7 @@ export function LogoWall() {
     let frame = 0
     const update = () => {
       frame = 0
-      if (!sectionRef.current || !stageRef.current || !copyRef.current || !productCopyRef.current || !productNavRef.current || !productHeaderRef.current || !productCardRef.current) return
+      if (!sectionRef.current || !stageRef.current || !gradientRef.current || !copyRef.current || !productCopyRef.current || !productNavRef.current || !productHeaderRef.current || !productCardRef.current) return
       const rect = sectionRef.current.getBoundingClientRect()
       const travel = Math.max(rect.height - window.innerHeight, 1)
       const progress = Math.min(1, Math.max(0, -rect.top / travel))
@@ -64,6 +65,7 @@ export function LogoWall() {
       const green = Math.round(255 + (25 - 255) * arrange)
       const blue = Math.round(255 + (39 - 255) * arrange)
       stageRef.current.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+      gradientRef.current.style.opacity = `${arrange}`
       const productCardRect = productCardRef.current.getBoundingClientRect()
 
       imageRefs.current.forEach((image, index) => {
@@ -126,6 +128,11 @@ export function LogoWall() {
   return (
     <section ref={sectionRef} id="product" className="relative h-[1100vh] bg-white text-ink">
       <div ref={stageRef} className="sticky top-0 h-screen overflow-hidden bg-white will-change-[background-color]">
+        <div
+          ref={gradientRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,#354866_0%,#23334d_24%,#111927_58%,#08101c_100%)] opacity-0 will-change-[opacity]"
+        />
         {images.map((image, index) => (
           <div key={`${image.src}-${index}`} ref={(node) => { imageRefs.current[index] = node }} className={`second-section-image absolute h-[150px] w-[210px] overflow-hidden rounded-xl will-change-transform sm:h-[170px] sm:w-[240px] ${image.className}`}>
             <img src={image.src} alt="" className="size-full object-cover" />
@@ -140,9 +147,9 @@ export function LogoWall() {
           </div>
         </div>
         <div className="pointer-events-none absolute inset-y-0 inset-x-0 z-30 mx-auto max-w-[1500px]">
-          <div ref={productHeaderRef} className="absolute inset-x-0 top-[13%] z-40 flex flex-col items-center px-6 text-center text-white opacity-0 will-change-transform">
+          <div ref={productHeaderRef} className="absolute left-[5%] right-[5%] top-[13%] z-40 flex flex-col items-start text-left text-white opacity-0 will-change-transform lg:left-[2%] lg:right-auto lg:w-[62%]">
             <div className="inline-flex items-center gap-2 border border-white px-2 py-1"><span className="size-1.5 bg-white" /><span className="text-[10px] font-semibold tracking-[.14em]">WHY HINSTANTT</span></div>
-            <h2 className="mt-4 max-w-[900px] font-display text-[clamp(2.2rem,4vw,4.2rem)] leading-[.92] tracking-[-.055em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
+            <h2 className="mt-4 max-w-[760px] font-display text-[clamp(1.9rem,3.2vw,3.4rem)] leading-[.96] tracking-[-.045em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
           </div>
           <div ref={productCardRef} className="absolute left-[25%] right-[5%] top-[39%] h-[48%] overflow-hidden opacity-0" />
           <div ref={productCopyRef} className="absolute left-[71%] top-[39%] w-[20%] text-white opacity-0 will-change-transform">

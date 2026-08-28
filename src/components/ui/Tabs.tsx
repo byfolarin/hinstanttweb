@@ -11,10 +11,12 @@ export function Tabs({
   tabs,
   tone = "light",
   className,
+  onChange,
 }: {
   tabs: Tab[]
   tone?: "light" | "dark"
   className?: string
+  onChange?: (index: number) => void
 }) {
   const [active, setActive] = useState(0)
   const id = useId()
@@ -28,6 +30,7 @@ export function Tabs({
         ? (active + 1) % tabs.length
         : (active - 1 + tabs.length) % tabs.length
     setActive(next)
+    onChange?.(next)
     document.getElementById(`${id}-tab-${next}`)?.focus()
   }
 
@@ -50,7 +53,10 @@ export function Tabs({
             aria-selected={active === i}
             aria-controls={`${id}-panel-${i}`}
             tabIndex={active === i ? 0 : -1}
-            onClick={() => setActive(i)}
+            onClick={() => {
+              setActive(i)
+              onChange?.(i)
+            }}
             className={cn(
               "rounded-full px-5 py-2.5 text-[0.9rem] font-medium transition-colors duration-200",
               active === i
