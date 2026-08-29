@@ -10,8 +10,11 @@ import { Security } from "./components/sections/Security"
 import { GradientBridge } from "./components/sections/GradientBridge"
 import { GlassMotion } from "./components/sections/GlassMotion"
 import { InvestorLogos } from "./components/sections/InvestorLogos"
+import { ProductPage } from "./components/pages/ProductPage"
 
 export default function App() {
+  const productMatch = window.location.pathname.match(/^\/products\/([^/]+)\/?$/)
+  if (productMatch) return <ProductPage slug={productMatch[1]} />
   return (
     <>
       <Nav />

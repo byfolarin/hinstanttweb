@@ -3,6 +3,7 @@ import { Container } from "../ui/Container"
 import { brand, footer } from "../../content/site"
 import logo from "../../assets/hinstanttlogo.png"
 import logoType from "../../assets/logo-mark.svg"
+import { productSlugByName } from "../../content/products"
 
 type LogoPoint = { x: number; y: number; phase: number }
 
@@ -146,7 +147,7 @@ export function Footer() {
               <div key={col.title}>
                 <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-white/35">{col.title}</p>
                 <ul className="mt-5 space-y-3">
-                  {col.links.map((link) => <li key={link}><a href="#" className="text-sm text-white/68 transition-colors hover:text-white">{link}</a></li>)}
+                  {col.links.map((link) => <li key={link}><a href={productSlugByName[link] ? `/products/${productSlugByName[link]}` : link === "About Us" ? "/about" : link === "Contact" ? "/contact" : "#"} className="text-sm text-white/68 transition-colors hover:text-white">{link}</a></li>)}
                 </ul>
               </div>
             ))}

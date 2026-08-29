@@ -18,6 +18,7 @@ import {
 } from "@hugeicons/core-free-icons"
 import logoDesign from "../../assets/logo-mark.svg"
 import { brand, nav } from "../../content/site"
+import { productSlugByName } from "../../content/products"
 
 const navIcons = {
   "Corporate Cards": CreditCardIcon,
@@ -99,7 +100,7 @@ export function Nav() {
                 <h2 className="font-display text-[1.25rem] leading-none tracking-[-.04em] sm:text-[clamp(1.55rem,2.2vw,2.25rem)]">{link.label}</h2>
                 <div className={`mt-4 grid gap-x-8 gap-y-1 sm:mt-5 sm:gap-y-5 ${link.label === "Product" ? "grid-cols-1 sm:grid-cols-3 lg:grid-cols-4" : "grid-cols-1"}`}>
                   {link.items.map((item) => (
-                    <a key={item.label} href={item.label === "About Us" ? "/about" : item.label === "Contact" ? "/contact" : "#platform"} onClick={() => setOpen(false)} className="group flex items-center gap-3 border-b border-black/8 px-1 py-2.5 transition-colors last:border-b-0 hover:bg-cream/45 sm:rounded-xl sm:border-b-0 sm:p-2">
+                    <a key={item.label} href={item.label === "About Us" ? "/about" : item.label === "Contact" ? "/contact" : `/products/${productSlugByName[item.label]}`} onClick={() => setOpen(false)} className="group flex items-center gap-3 border-b border-black/8 px-1 py-2.5 transition-colors last:border-b-0 hover:bg-cream/45 sm:rounded-xl sm:border-b-0 sm:p-2">
                       <NavItemIcon label={item.label} />
                       <span className="min-w-0"><span className="flex items-center gap-1.5 text-[12px] font-semibold leading-tight sm:text-[13px]"><span>{item.label}</span><span className="opacity-0 transition-[opacity,transform] group-hover:translate-x-1 group-hover:opacity-100">↗</span></span><span className="mt-0.5 hidden text-[11px] leading-snug text-black/45 lg:block">{item.desc}</span></span>
                     </a>
