@@ -1,9 +1,8 @@
-import { HugeiconsIcon } from "@hugeicons/react"
-import { CheckmarkCircle02Icon } from "@hugeicons/core-free-icons"
 import { Nav } from "../layout/Nav"
 import { Footer } from "../layout/Footer"
 import { Container } from "../ui/Container"
 import { Reveal } from "../ui/Reveal"
+import { GradientBridge } from "../sections/GradientBridge"
 import { productPages, type ProductPageData } from "../../content/products"
 
 function EmailCapture() {
@@ -40,89 +39,79 @@ export function ProductPage({ slug }: { slug: string }) {
     <>
       <Nav />
       <main className="bg-white text-navy">
-        <section className="overflow-hidden pb-16 pt-36 sm:pb-24 sm:pt-44">
+        <section className="overflow-hidden pb-0 pt-36 sm:pt-44">
           <Container>
-            <div className="grid items-center gap-14 lg:grid-cols-[5fr_7fr] lg:gap-14">
-              <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/45">{product.eyebrow} · {product.name}</p>
-                <h1 className="mt-6 max-w-[620px] text-h2 text-balance">{product.headline}</h1>
-                <p className="mt-6 max-w-[580px] text-lead text-navy/62">{product.sub}</p>
-                <div className="mt-9"><EmailCapture /></div>
-                <a href="mailto:newbusiness@hinstantt.com" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">Talk to sales <span>↗</span></a>
-              </Reveal>
-              <Reveal delay={120}><ProductVisual product={product} /></Reveal>
-            </div>
+            <Reveal className="mx-auto block max-w-[790px] text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/45">{product.eyebrow} · {product.name}</p>
+              <h1 className="mt-6 text-h2 text-balance">{product.headline}</h1>
+              <p className="mx-auto mt-6 max-w-[650px] text-lead text-navy/62">{product.sub}</p>
+              <div className="mx-auto mt-8 flex max-w-[510px] justify-center"><EmailCapture /></div>
+              <a href="mailto:newbusiness@hinstantt.com" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">Talk to sales <span>↗</span></a>
+            </Reveal>
+            <Reveal delay={120} className="mx-auto mt-16 block max-w-[1080px] sm:mt-20"><ProductVisual product={product} /></Reveal>
           </Container>
         </section>
 
-        <section className="border-y border-navy/10 bg-cream py-16 sm:py-24">
+        <section className="bg-white py-20 sm:py-28">
           <Container>
-            <Reveal><p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/40">One platform. Every step connected.</p></Reveal>
-            <div className="mt-10 grid border-t border-navy/15 md:grid-cols-3">
-              {product.capabilities.map((capability, index) => (
-                <Reveal key={capability.t} delay={index * 80} className={`block py-8 md:min-h-[260px] md:px-8 md:py-10 ${index ? "border-t border-navy/15 md:border-l md:border-t-0" : ""}`}>
+            <Reveal className="mx-auto block max-w-[760px] text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/40">{product.short}</p>
+              <h2 className="mt-5 text-h2 text-balance">{product.spotlight.headline}</h2>
+              <p className="mx-auto mt-5 max-w-[600px] text-lead text-navy/58">{product.spotlight.body}</p>
+            </Reveal>
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
+              {product.spotlight.bullets.map((bullet, index) => (
+                <Reveal key={bullet} delay={index * 80} className="block min-h-[220px] rounded-[22px] bg-[#e9edf2] p-7">
                   <span className="text-xs text-navy/35">0{index + 1}</span>
-                  <h2 className="mt-12 text-h3">{capability.t}</h2>
-                  <p className="mt-4 max-w-[340px] leading-6 text-navy/58">{capability.d}</p>
+                  <p className="mt-20 text-h3 text-balance">{bullet}</p>
                 </Reveal>
               ))}
             </div>
           </Container>
         </section>
 
-        <section className="bg-white py-20 sm:py-32">
+        <section className="border-y border-navy/10 bg-cream py-20 sm:py-28">
           <Container>
-            <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-              <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/40">{product.short}</p>
-                <h2 className="mt-5 max-w-[620px] text-h2 text-balance">{product.spotlight.headline}</h2>
-                <p className="mt-6 max-w-[540px] text-lead text-navy/58">{product.spotlight.body}</p>
-                <ul className="mt-9 space-y-4">
-                  {product.spotlight.bullets.map((bullet) => <li key={bullet} className="flex items-center gap-3 border-t border-navy/12 pt-4"><HugeiconsIcon icon={CheckmarkCircle02Icon} size={20} color="currentColor" strokeWidth={1.6} /><span>{bullet}</span></li>)}
-                </ul>
-              </Reveal>
-              <Reveal delay={100}>
-                <div className="relative min-h-[420px] overflow-hidden rounded-[28px] bg-[#e9edf2] sm:min-h-[540px]" aria-label={`${product.name} product mockup area`}>
-                  <div className="absolute inset-0 [background-image:linear-gradient(rgba(17,25,39,.055)_1px,transparent_1px),linear-gradient(90deg,rgba(17,25,39,.055)_1px,transparent_1px)] [background-size:72px_72px]" />
-                  <div className="absolute inset-x-[8%] bottom-0 top-[12%] rounded-t-[24px] border border-b-0 border-navy/10 bg-white/35 shadow-[0_-20px_60px_rgba(17,25,39,.05)]" />
-                  <div className="absolute left-[8%] top-[12%] h-12 w-px -translate-y-full bg-navy/18" />
-                  <div className="absolute right-[8%] top-[12%] h-12 w-px -translate-y-full bg-navy/18" />
-                  <div className="absolute bottom-6 left-6 flex gap-2"><span className="size-1.5 rounded-full bg-navy/25" /><span className="size-1.5 rounded-full bg-navy/15" /><span className="size-1.5 rounded-full bg-navy/10" /></div>
-                </div>
-              </Reveal>
+            <Reveal className="mx-auto block max-w-[760px] text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-navy/40">One platform. Every step connected.</p>
+              <h2 className="mt-5 text-h2 text-balance">Everything {product.name.toLowerCase()} needs, in one flow.</h2>
+            </Reveal>
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
+              {product.capabilities.map((capability, index) => (
+                <Reveal key={capability.t} delay={index * 80} className="block min-h-[300px] rounded-[22px] border border-navy/10 bg-white p-7">
+                  <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-navy/35">{product.eyebrow}</p>
+                  <h3 className="mt-16 text-h3">{capability.t}</h3>
+                  <p className="mt-4 leading-6 text-navy/58">{capability.d}</p>
+                </Reveal>
+              ))}
             </div>
           </Container>
         </section>
 
-        <section className="bg-navy py-20 text-white sm:py-32">
+        <section className="bg-white py-20 sm:py-28">
           <Container>
             <Reveal>
-              <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
-                <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-white/40">{product.agent.name} · 24/7</p>
-                <blockquote className="text-h2 text-balance">“{product.agent.line}”</blockquote>
+              <div className="relative flex min-h-[620px] items-end overflow-hidden rounded-[28px] bg-navy p-7 text-white sm:min-h-[760px] sm:p-12">
+                <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle,rgba(255,255,255,.14)_1px,transparent_1.2px)] [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,black,transparent_82%)]" />
+                <div className="relative max-w-[620px]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[.18em] text-white/40">{product.agent.name} · 24/7</p>
+                  <blockquote className="mt-5 text-h2 text-balance">“{product.agent.line}”</blockquote>
+                </div>
               </div>
             </Reveal>
           </Container>
         </section>
 
-        <section className="bg-cream py-20 sm:py-28">
+        <section className="bg-white py-20 sm:py-28">
           <Container>
-            <Reveal><h2 className="text-h2">Keep your finance stack simple.</h2></Reveal>
-            <div className="mt-12 grid gap-px overflow-hidden rounded-[28px] bg-navy/12 md:grid-cols-3">
-              {related.map(([key, item]) => <a key={key} href={`/products/${key}`} className="group min-h-[250px] bg-white p-8 transition-colors hover:bg-navy hover:text-white"><p className="text-xs uppercase tracking-[.16em] opacity-45">{item.eyebrow}</p><h3 className="mt-16 text-h3">{item.name}</h3><p className="mt-3 text-sm opacity-55">{item.short}</p><span className="mt-8 inline-block transition-transform group-hover:translate-x-1">→</span></a>)}
+            <Reveal className="mx-auto block max-w-[760px] text-center"><h2 className="text-h2 text-balance">Keep your finance stack simple.</h2></Reveal>
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
+              {related.map(([key, item]) => <a key={key} href={`/products/${key}`} className="group min-h-[260px] rounded-[22px] bg-cream p-8 transition-colors hover:bg-navy hover:text-white"><p className="text-xs uppercase tracking-[.16em] opacity-45">{item.eyebrow}</p><h3 className="mt-16 text-h3">{item.name}</h3><p className="mt-3 text-sm opacity-55">{item.short}</p><span className="mt-8 inline-block transition-transform group-hover:translate-x-1">→</span></a>)}
             </div>
           </Container>
         </section>
 
-        <section className="bg-white py-20 sm:py-32">
-          <Container>
-            <div className="overflow-hidden rounded-[36px] bg-navy px-6 py-16 text-center text-white sm:px-12 sm:py-24">
-              <h2 className="mx-auto max-w-[760px] text-h2 text-balance">Run global finance on one platform.</h2>
-              <p className="mx-auto mt-6 max-w-[620px] text-white/58">Open an account in minutes. Move your spend, payments and accounting onto Hinstantt this quarter.</p>
-              <div className="mx-auto mt-9 flex max-w-[500px] justify-center"><EmailCapture /></div>
-            </div>
-          </Container>
-        </section>
+        <GradientBridge />
       </main>
       <Footer />
     </>
