@@ -46,7 +46,7 @@ const pointIcons = {
 export function Platform() {
   const [activeWorkflow, setActiveWorkflow] = useState(0)
   return (
-    <Section tone="navy" id="platform">
+    <Section tone="navy" id="platform" className="relative z-40 -mt-[100svh] min-h-[100svh]">
       <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-12">
         <div className="min-w-0">
           <Reveal>

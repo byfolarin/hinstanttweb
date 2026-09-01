@@ -7,7 +7,6 @@ import { Trust } from "./components/sections/Trust"
 import { Platform } from "./components/sections/Platform"
 import { Testimonials } from "./components/sections/Testimonials"
 import { Security } from "./components/sections/Security"
-import { GradientBridge } from "./components/sections/GradientBridge"
 import { InvestorLogos } from "./components/sections/InvestorLogos"
 import { ProductPage } from "./components/pages/ProductPage"
 import { CorporateCardsPage } from "./components/pages/CorporateCardsPage"
@@ -28,7 +27,6 @@ export default function App() {
         <Platform />
         <Testimonials />
         <Security />
-        <GradientBridge />
       </main>
       <Footer />
     </>

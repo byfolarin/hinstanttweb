@@ -136,7 +136,7 @@ export function Hero() {
             <StaggeredWords text={hero.eyebrow} offset={6} />
           </p>
 
-          <h1 className="max-w-full font-display text-[clamp(1.9rem,min(8vw,11svh),6rem)] font-normal leading-[.94] tracking-[-.048em] sm:leading-[.92]">
+          <h1 className="max-w-full font-display text-[clamp(1.9rem,min(8vw,11svh),6rem)] font-normal leading-[1.08] tracking-[-.048em]">
             <StaggeredWords text={hero.headline[0]} className="block whitespace-nowrap" />
             <span className="block whitespace-nowrap">
               <StaggeredWords text="for global" offset={3} />{" "}
