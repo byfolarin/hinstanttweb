@@ -1,17 +1,27 @@
 import { useEffect, useRef, useState } from "react"
 import { logoWall } from "../../content/site"
+import paymentsImage from "../../assets/product-scenes/payments.jpg"
+import cardsImage from "../../assets/product-scenes/corporate-cards.jpg"
+import treasuryImage from "../../assets/product-scenes/treasury.jpg"
+import accountingImage from "../../assets/product-scenes/accounting.jpg"
+import stablecoinImage from "../../assets/product-scenes/stablecoin-ramp.jpg"
+import expenseImage from "../../assets/product-scenes/expense.jpg"
+import procurementImage from "../../assets/product-scenes/procurement.jpg"
+import invoicingImage from "../../assets/product-scenes/invoicing.jpg"
+import reportingImage from "../../assets/product-scenes/reporting.jpg"
+import aiFinanceImage from "../../assets/product-scenes/ai-finance.jpg"
 
 const images = [
-  { title: "Corporate Cards", description: "Issue virtual and physical cards with real-time limits and controls.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-1.webp", className: "-top-14 left-[14%]", speed: -120 },
-  { title: "Global Payments", description: "Send and receive money from one account.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-2.webp", className: "-top-20 left-[45%]", speed: 80 },
-  { title: "Treasury", description: "Manage liquidity, currencies, yield, and cash positions in real time.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-3.webp", className: "-top-8 right-[11%]", speed: -70 },
-  { title: "Accounting", description: "Reconcile transactions and keep the ledger continuously up to date.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-4.webp", className: "bottom-[2%] left-[18%]", speed: 115 },
-  { title: "Stablecoin Ramp", description: "Move between fiat and stablecoins through compliant global rails.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-5.webp", className: "bottom-[-2%] right-[8%]", speed: -95 },
-  { title: "Expense", description: "Capture receipts, enforce policy, and reimburse teams automatically.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-2.webp", className: "top-[18%] -left-8", speed: 92 },
-  { title: "Procurement", description: "Run requests, approvals, purchase orders, and vendor payments.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-4.webp", className: "top-[24%] -right-10", speed: -105 },
-  { title: "Invoicing & Billing", description: "Create invoices, automate billing, and collect customer payments.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-1.webp", className: "bottom-[12%] left-[2%]", speed: -78 },
-  { title: "Reporting", description: "See spend, revenue, budgets, and cash flow without spreadsheet work.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-3.webp", className: "bottom-[7%] left-[46%]", speed: 128 },
-  { title: "AI Financial Management", description: "Deploy an agent inside every module to handle repetitive work.", src: "https://www.usemultiplier.com/wp-content/uploads/2025/12/img-5.webp", className: "top-[42%] right-[3%]", speed: 68 },
+  { title: "Corporate Cards", description: "Issue virtual and physical cards with real-time limits and controls.", src: cardsImage, className: "-top-14 left-[14%]", speed: -120 },
+  { title: "Global Payments", description: "Send and receive money from one account.", src: paymentsImage, className: "-top-20 left-[45%]", speed: 80 },
+  { title: "Treasury", description: "Manage liquidity, currencies, yield, and cash positions in real time.", src: treasuryImage, className: "-top-8 right-[11%]", speed: -70 },
+  { title: "Accounting", description: "Reconcile transactions and keep the ledger continuously up to date.", src: accountingImage, className: "bottom-[2%] left-[18%]", speed: 115 },
+  { title: "Stablecoin Ramp", description: "Move between fiat and stablecoins through compliant global rails.", src: stablecoinImage, className: "bottom-[-2%] right-[8%]", speed: -95 },
+  { title: "Expense", description: "Capture receipts, enforce policy, and reimburse teams automatically.", src: expenseImage, className: "top-[18%] -left-8", speed: 92 },
+  { title: "Procurement", description: "Run requests, approvals, purchase orders, and vendor payments.", src: procurementImage, className: "top-[24%] -right-10", speed: -105 },
+  { title: "Invoicing & Billing", description: "Create invoices, automate billing, and collect customer payments.", src: invoicingImage, className: "bottom-[12%] left-[2%]", speed: -78 },
+  { title: "Reporting", description: "See spend, revenue, budgets, and cash flow without spreadsheet work.", src: reportingImage, className: "bottom-[7%] left-[46%]", speed: 128 },
+  { title: "AI Financial Management", description: "Deploy an agent inside every module to handle repetitive work.", src: aiFinanceImage, className: "top-[42%] right-[3%]", speed: 68 },
 ]
 
 const productScenes = [
@@ -37,13 +47,14 @@ export function LogoWall() {
   const productNavRef = useRef<HTMLDivElement>(null)
   const productHeaderRef = useRef<HTMLDivElement>(null)
   const productCardRef = useRef<HTMLDivElement>(null)
+  const productScrimRef = useRef<HTMLDivElement>(null)
   const imageRefs = useRef<Array<HTMLDivElement | null>>([])
 
   useEffect(() => {
     let frame = 0
     const update = () => {
       frame = 0
-      if (!sectionRef.current || !stageRef.current || !gradientRef.current || !copyRef.current || !productCopyRef.current || !productNavRef.current || !productHeaderRef.current || !productCardRef.current) return
+      if (!sectionRef.current || !stageRef.current || !gradientRef.current || !copyRef.current || !productCopyRef.current || !productNavRef.current || !productHeaderRef.current || !productCardRef.current || !productScrimRef.current) return
       const rect = sectionRef.current.getBoundingClientRect()
       const travel = Math.max(rect.height - window.innerHeight, 1)
       const progress = Math.min(1, Math.max(0, -rect.top / travel))
@@ -87,11 +98,12 @@ export function LogoWall() {
         const arrangedScale = splitScale + (lineScale - splitScale) * arrange
         const gridResolvedScale = arrangedScale + (gridScale - arrangedScale) * grid
         const isPaymentImage = index === activeImageIndex
-        const visualWidth = productCardRect.width * .56
-        const productScale = Math.min(visualWidth / image.offsetWidth, productCardRect.height / image.offsetHeight)
+        const visualWidth = productCardRect.width
+        const productScale = Math.max(visualWidth / image.offsetWidth, productCardRect.height / image.offsetHeight)
         const renderedImageWidth = image.offsetWidth * productScale
+        const renderedImageHeight = image.offsetHeight * productScale
         const productX = productCardRect.left + renderedImageWidth / 2 - (image.offsetLeft + image.offsetWidth / 2)
-        const productY = productCardRect.top + (image.offsetHeight * productScale) / 2 - (image.offsetTop + image.offsetHeight / 2)
+        const productY = productCardRect.top + renderedImageHeight / 2 - (image.offsetTop + image.offsetHeight / 2)
         const x = gridResolvedX + (productX - gridResolvedX) * product
         const y = gridResolvedY + (productY - gridResolvedY) * product
         const scale = gridResolvedScale + ((isPaymentImage ? productScale : gridResolvedScale) - gridResolvedScale) * product
@@ -100,6 +112,14 @@ export function LogoWall() {
         image.style.opacity = `${isPaymentImage ? .82 + split * .18 : (.82 + split * .18) * (1 - product)}`
         image.style.zIndex = isPaymentImage ? "20" : "1"
         image.style.setProperty("--label-opacity", "0")
+
+        if (isPaymentImage && scale > 0) {
+          const overflowY = Math.max(0, image.offsetHeight * scale - productCardRect.height)
+          const insetPx = overflowY / 2 / scale
+          image.style.clipPath = insetPx > 0.5 ? `inset(${insetPx}px 0 ${insetPx}px 0 round 12px)` : "none"
+        } else {
+          image.style.clipPath = "none"
+        }
       })
 
       const copyProgress = Math.min(1, Math.max(0, (progress - .06) / .08))
@@ -113,6 +133,7 @@ export function LogoWall() {
       productHeaderRef.current.style.opacity = `${productReveal}`
       productHeaderRef.current.style.transform = `translate3d(0, ${(1 - productReveal) * 24}px, 0)`
       productCardRef.current.style.opacity = `${productReveal}`
+      productScrimRef.current.style.opacity = `${productReveal}`
     }
     const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update) }
     update()
@@ -135,7 +156,7 @@ export function LogoWall() {
         />
         {images.map((image, index) => (
           <div key={`${image.src}-${index}`} ref={(node) => { imageRefs.current[index] = node }} className={`second-section-image absolute h-[150px] w-[210px] overflow-hidden rounded-xl will-change-transform sm:h-[170px] sm:w-[240px] ${image.className}`}>
-            <img src={image.src} alt="" className="size-full object-cover" />
+            <img src={image.src} alt={`${image.title} in action`} className="size-full object-cover" />
             <div className="second-section-label absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy via-navy/90 to-transparent px-4 pb-3 pt-12 text-white"><p className="text-sm font-semibold">{image.title}</p><p className="mt-1 text-[10px] leading-snug text-white/65">{image.description}</p></div>
           </div>
         ))}
@@ -151,8 +172,9 @@ export function LogoWall() {
             <div className="inline-flex items-center gap-2 border border-white px-2 py-1"><span className="size-1.5 bg-white" /><span className="text-[10px] font-semibold tracking-[.14em]">WHY HINSTANTT</span></div>
             <h2 className="mt-4 max-w-[760px] font-display text-[clamp(1.9rem,3.2vw,3.4rem)] leading-[.96] tracking-[-.045em]">Your back office is complex.<br />Running it shouldn’t be.</h2>
           </div>
-          <div ref={productCardRef} className="absolute left-[25%] right-[5%] top-[39%] h-[48%] overflow-hidden opacity-0" />
-          <div ref={productCopyRef} className="absolute left-[71%] top-[39%] w-[20%] text-white opacity-0 will-change-transform">
+          <div ref={productCardRef} className="absolute left-[28%] right-[28%] top-[39%] h-[48%] overflow-hidden rounded-[28px] opacity-0" />
+          <div ref={productScrimRef} aria-hidden="true" className="pointer-events-none absolute hidden opacity-0" />
+          <div ref={productCopyRef} className="absolute left-[75%] top-[39%] w-[20%] text-white opacity-0 will-change-transform">
             <div className="grid size-7 place-items-center rounded-sm bg-white/[.08] text-xs text-white/65">{productScenes[activeProduct].number}</div>
             <h3 className="mt-3 font-display text-[clamp(1.6rem,2.4vw,2.2rem)] leading-tight tracking-[-.035em]">{productScenes[activeProduct].title}</h3>
             <p className="mt-4 text-sm leading-relaxed text-white/64">{productScenes[activeProduct].body}</p>

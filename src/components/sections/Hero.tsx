@@ -19,10 +19,12 @@ function StaggeredWords({ text, offset = 0, className = "" }: { text: string; of
 
 function GridRotatingWord({ active }: { active: boolean }) {
   const [wordIndex, setWordIndex] = useState(0)
+  const rotatedRef = useRef(false)
 
   useEffect(() => {
     if (!active) return
     const interval = window.setInterval(() => {
+      rotatedRef.current = true
       setWordIndex((current) => (current + 1) % rotatingHeroWords.length)
     }, 3200)
     return () => window.clearInterval(interval)
@@ -33,7 +35,11 @@ function GridRotatingWord({ active }: { active: boolean }) {
   return (
     <span className="hero-rotating-word" aria-live="polite" aria-atomic="true">
       <span className="sr-only">{word}</span>
-      <span key={word} className="hero-word-grid" aria-hidden="true">
+      <span
+        key={word}
+        className={`hero-word-grid${rotatedRef.current ? " hero-word-grid--rotate" : ""}`}
+        aria-hidden="true"
+      >
         {word.split("").map((character, index) => (
           <span
             key={`${word}-${index}`}
@@ -134,7 +140,9 @@ export function Hero() {
             <StaggeredWords text={hero.headline[0]} className="block whitespace-nowrap" />
             <span className="block whitespace-nowrap">
               <StaggeredWords text="for global" offset={3} />{" "}
-              <GridRotatingWord active={contentVisible} />
+              <span className="stagger-word inline-block" style={{ "--word-index": 5 } as CSSProperties}>
+                <GridRotatingWord active={contentVisible} />
+              </span>
             </span>
           </h1>
 

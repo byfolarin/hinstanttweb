@@ -8,20 +8,20 @@ import { Platform } from "./components/sections/Platform"
 import { Testimonials } from "./components/sections/Testimonials"
 import { Security } from "./components/sections/Security"
 import { GradientBridge } from "./components/sections/GradientBridge"
-import { GlassMotion } from "./components/sections/GlassMotion"
 import { InvestorLogos } from "./components/sections/InvestorLogos"
 import { ProductPage } from "./components/pages/ProductPage"
+import { CorporateCardsPage } from "./components/pages/CorporateCardsPage"
 
 export default function App() {
   const productMatch = window.location.pathname.match(/^\/products\/([^/]+)\/?$/)
+  if (productMatch?.[1] === "corporate-cards") return <CorporateCardsPage />
   if (productMatch) return <ProductPage slug={productMatch[1]} />
   return (
     <>
       <Nav />
-      <main>
+      <main className="homepage-content">
         <Hero />
         <InvestorLogos />
-        <GlassMotion />
         <LogoWall />
         <Manifesto />
         <Trust />

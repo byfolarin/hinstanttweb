@@ -68,7 +68,7 @@ export function Nav() {
         <div className={`relative grid h-[58px] w-full max-w-[230px] grid-cols-[1fr_48px] items-center bg-white text-ink transition-[border-radius,box-shadow] duration-500 ease-[var(--ease-out-soft)] sm:h-[68px] sm:max-w-[420px] sm:grid-cols-[1fr_auto_56px] ${detached ? "rounded-full shadow-[0_12px_40px_rgba(0,0,0,.16)]" : "rounded-b-[18px] shadow-[0_8px_24px_rgba(0,0,0,.08)] sm:rounded-b-[22px]"}`}>
           <span aria-hidden="true" className={`nav-notch-left absolute -left-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />
           <span aria-hidden="true" className={`nav-notch-right absolute -right-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />
-          <a href="#top" onClick={() => setOpen(false)} className="flex h-full items-center pl-5 sm:pl-6" aria-label={`${brand.name} home`}>
+          <a href={window.location.pathname === "/" ? "#top" : "/"} onClick={() => setOpen(false)} className="flex h-full items-center pl-5 sm:pl-6" aria-label={`${brand.name} home`}>
             <img src={logoDesign} alt={brand.name} className="h-3.5 w-auto brightness-0 sm:h-4" />
           </a>
           <a href="#demo" onClick={() => setOpen(false)} className="hidden h-10 items-center justify-center rounded-full bg-navy px-5 text-[13px] font-semibold text-white transition-transform hover:-translate-y-px sm:inline-flex">Get started</a>

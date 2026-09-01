@@ -17,6 +17,7 @@
   /* ---- Type ---- */
   --font-display: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Merriweather", Georgia, serif;
 
   /* Display scale — heavy, tightly tracked, like the reference */
   --text-display: clamp(2.75rem, 7.5vw, 6.4rem);
@@ -77,8 +78,29 @@
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
+/* Match the serif treatment used on the Corporate Cards page across every
+   homepage heading, without touching the shared Nav/Footer chrome or the
+   other product pages. */
+.homepage-content h1,
+.homepage-content h2,
+.homepage-content h3,
+.homepage-content h4,
+.homepage-content .font-display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+}
+
 .second-section-image { transform-origin: center; }
 .second-section-label { opacity: var(--label-opacity, 0); }
+
+.manifesto-overlap-field {
+  background:
+    radial-gradient(ellipse at 14% 0%, rgba(101, 125, 185, .7), transparent 42%),
+    radial-gradient(ellipse at 82% 5%, rgba(255, 116, 37, .38), transparent 39%),
+    radial-gradient(ellipse at 52% 18%, rgba(54, 79, 132, .72), transparent 55%),
+    linear-gradient(180deg, #111927 0%, rgba(24, 37, 62, .96) 45%, rgba(17, 25, 39, .7) 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 100%);
+}
 
 .product-ui {
   position: relative;
@@ -471,6 +493,9 @@
 .hero-word-column {
   display: inline-block;
   transform-origin: 50% 100%;
+}
+
+.hero-word-grid--rotate .hero-word-column {
   animation: heroWordColumnReveal .82s var(--ease-out-soft) both;
   animation-delay: calc(var(--letter-index) * 55ms);
 }
