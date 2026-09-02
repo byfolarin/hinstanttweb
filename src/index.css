@@ -7,7 +7,7 @@
   --color-navy-700: #253248;     /* primary hover */
   --color-blue: #111927;         /* primary action */
   --color-blue-bright: #253248;  /* hover / focus */
-  --color-orange: #ff6b17;       /* accent */
+  --color-orange: #253248;       /* legacy accent alias: Hinstantt deep blue */
   --color-cream: #fbf6ee;        /* warm off-white surface */
   --color-cream-deep: #f6efe1;
   --color-mute: #696563;         /* secondary text */
@@ -92,6 +92,66 @@
 
 .second-section-image { transform-origin: center; }
 .second-section-label { opacity: var(--label-opacity, 0); }
+
+@keyframes innerPagePanelFloat {
+  0%, 100% { transform: translate3d(0, 0, 30px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: translate3d(0, -10px, 42px) rotateX(1deg) rotateY(-1deg); }
+}
+
+@keyframes innerPageCardFloat {
+  0%, 100% { transform: translate3d(0, 0, 70px) rotate(-5deg) rotateY(-7deg); }
+  50% { transform: translate3d(0, -9px, 82px) rotate(-3deg) rotateY(-3deg); }
+}
+
+.inner-page-float-panel {
+  animation: innerPagePanelFloat 7s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.inner-page-float-card {
+  animation: innerPageCardFloat 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.inner-page-scene {
+  transition: transform 1.2s var(--ease-out-soft);
+}
+
+.inner-page-scene:hover,
+.group:hover > .inner-page-scene {
+  transform: scale(1.045);
+}
+
+@keyframes cardExchangeOrbit {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.card-exchange-orbit { animation: cardExchangeOrbit 18s linear infinite; }
+.card-exchange-story-image { transform: scale(1.035); transition: transform 1.4s var(--ease-out-soft); }
+.card-exchange-story-image:hover { transform: scale(1.08); }
+
+.card-exchange-page h1 {
+  max-width: 1100px;
+  font-size: clamp(2.8rem, 7vw, 7rem) !important;
+  line-height: .92 !important;
+  letter-spacing: -.055em !important;
+}
+
+.card-exchange-page h2 {
+  font-size: clamp(2.35rem, 4.5vw, 4.6rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+}
+
+.card-exchange-page h3 {
+  font-size: clamp(2.1rem, 3.6vw, 3.6rem) !important;
+  line-height: 1 !important;
+  letter-spacing: -.04em !important;
+}
+
+.card-exchange-page strong {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
 
 .manifesto-overlap-field {
   background:

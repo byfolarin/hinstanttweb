@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { logoWall } from "../../content/site"
 import paymentsImage from "../../assets/product-scenes/payments.jpg"
-import cardsImage from "../../assets/product-scenes/corporate-cards.jpg"
+import cardsImage from "../../assets/product-scenes/corporate-cards-hinstantt.png"
 import treasuryImage from "../../assets/product-scenes/treasury.jpg"
 import accountingImage from "../../assets/product-scenes/accounting.jpg"
 import stablecoinImage from "../../assets/product-scenes/stablecoin-ramp.jpg"
