@@ -29,7 +29,7 @@ export function ProductPage({ slug }: { slug: string }) {
   const [openCapability, setOpenCapability] = useState(0)
   const related = product.related.map((relatedSlug) => ({ slug: relatedSlug, product: productPages[relatedSlug], image: productScenes[relatedSlug] ?? paymentsScene })).filter((item) => item.product)
 
-  return <><Nav /><main id="top" className="bg-[#eef3f6] text-[#111927]">
+  return <><Nav /><main id="top" className="product-editorial-page bg-[#eef3f6] text-[#111927]">
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#061e2a] px-5 pb-8 pt-28 text-white sm:px-8 lg:px-12 lg:pt-32">
       <img src={scene} alt={`${product.name} in action`} className="inner-page-scene absolute inset-0 size-full object-cover" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,42,.58)_0%,rgba(6,30,42,.18)_42%,rgba(6,30,42,.9)_100%)]" />

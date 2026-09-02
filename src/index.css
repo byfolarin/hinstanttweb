@@ -78,6 +78,16 @@
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
+.product-editorial-page h1,
+.product-editorial-page h2,
+.product-editorial-page h3 {
+  font-weight: 300;
+}
+
+.product-editorial-page section p {
+  font-weight: 400;
+}
+
 /* Match the serif treatment used on the Corporate Cards page across every
    homepage heading, without touching the shared Nav/Footer chrome or the
    other product pages. */
