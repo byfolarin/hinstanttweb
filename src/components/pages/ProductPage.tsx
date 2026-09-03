@@ -23,9 +23,24 @@ const productScenes: Record<string, string> = {
   reporting: reportingScene, "ai-financial-management": aiFinanceScene,
 }
 
+const heroLines: Record<string, [string, string]> = {
+  payments: ["Move money to 60+ markets", "in one click."],
+  expense: ["Expenses that", "file themselves."],
+  travel: ["Book travel that always", "stays in policy."],
+  accounts: ["One account for every", "currency you hold."],
+  treasury: ["Always know where your cash sits,", "and put it to work."],
+  "stablecoin-ramp": ["Cross between dollars", "and stablecoins instantly."],
+  accounting: ["Close the books while", "the team sleeps."],
+  procurement: ["Every purchase, requested,", "approved and matched."],
+  "invoicing-billing": ["Get paid", "faster, on autopilot."],
+  reporting: ["See the whole business", "in real time."],
+  "ai-financial-management": ["An AI finance team", "that never clocks out."],
+}
+
 export function ProductPage({ slug }: { slug: string }) {
   const product = productPages[slug] ?? productPages.payments
   const scene = productScenes[slug] ?? paymentsScene
+  const headline = heroLines[slug] ?? [product.headline, ""]
   const [openCapability, setOpenCapability] = useState(0)
   const related = product.related.map((relatedSlug) => ({ slug: relatedSlug, product: productPages[relatedSlug], image: productScenes[relatedSlug] ?? paymentsScene })).filter((item) => item.product)
 
@@ -34,7 +49,7 @@ export function ProductPage({ slug }: { slug: string }) {
       <img src={scene} alt={`${product.name} in action`} className="inner-page-scene absolute inset-0 size-full object-cover" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,42,.58)_0%,rgba(6,30,42,.18)_42%,rgba(6,30,42,.9)_100%)]" />
       <div className="relative z-10 mx-auto flex w-full max-w-[1500px] items-center justify-between text-[11px] font-semibold uppercase tracking-[.14em]"><span className="flex items-center gap-2"><i className="size-2 rounded-full bg-white" />{product.eyebrow} running on Hinstantt</span><span>{product.name} · 01</span></div>
-      <div className="relative z-10 mx-auto flex w-full max-w-[1500px] flex-1 flex-col items-start justify-end pb-[clamp(2.25rem,8svh,7rem)] pt-[clamp(5.5rem,13svh,9rem)]"><h1 className="max-w-[1050px] font-serif text-[clamp(1.8rem,min(6vw,9svh),4.75rem)] font-light leading-[1.1] tracking-[-.042em] drop-shadow-[0_4px_30px_rgba(0,0,0,.35)]">{product.headline}</h1></div>
+      <div className="relative z-10 mx-auto flex w-full max-w-[1500px] flex-1 flex-col items-start justify-end pb-[clamp(2.25rem,8svh,7rem)] pt-[clamp(5.5rem,13svh,9rem)]"><h1 className="max-w-[1150px] font-serif text-[clamp(1.8rem,min(6vw,9svh),4.75rem)] font-light leading-[1.1] tracking-[-.042em] drop-shadow-[0_4px_30px_rgba(0,0,0,.35)]"><span className="block">{headline[0]}</span><span className="block">{headline[1]}</span></h1></div>
       <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-8 border-t border-white/30 pt-6 lg:grid-cols-2 lg:items-end"><p className="max-w-[650px] text-[clamp(1.1rem,1.7vw,1.55rem)] leading-[1.35] tracking-[-.025em] text-white/82">{product.sub}</p><div className="flex gap-3 lg:justify-end"><a href="https://app.hinstantt.com/signup" className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-[#111927]">Join Hinstantt</a><a href="mailto:newbusiness@hinstantt.com" className="inline-flex h-12 items-center gap-2 rounded-full border border-white/45 px-6 text-sm font-semibold">Talk to sales ↗</a></div></div>
     </section>
 
