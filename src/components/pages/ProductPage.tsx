@@ -5,15 +5,48 @@ import { Nav } from "../layout/Nav"
 import { Footer } from "../layout/Footer"
 import { Reveal } from "../ui/Reveal"
 import paymentsScene from "../../assets/product-scenes/payments.jpg"
+import paymentsVideo from "../../assets/product-scenes/payments.mp4"
+import paymentsObliqueVideo from "../../assets/product-scenes/payments-angle-oblique.mp4"
+import paymentsDetailVideo from "../../assets/product-scenes/payments-angle-detail.mp4"
 import cardsScene from "../../assets/product-scenes/corporate-cards-hinstantt.png"
 import treasuryScene from "../../assets/product-scenes/treasury.jpg"
+import treasuryVideo from "../../assets/product-scenes/treasury.mp4"
+import treasuryObliqueVideo from "../../assets/product-scenes/treasury-angle-oblique.mp4"
+import treasuryDetailVideo from "../../assets/product-scenes/treasury-angle-detail.mp4"
 import stablecoinScene from "../../assets/product-scenes/stablecoin-ramp.jpg"
+import stablecoinVideo from "../../assets/product-scenes/stablecoin-ramp.mp4"
+import stablecoinObliqueVideo from "../../assets/product-scenes/stablecoin-ramp-angle-oblique.mp4"
+import stablecoinDetailVideo from "../../assets/product-scenes/stablecoin-ramp-angle-detail.mp4"
 import accountingScene from "../../assets/product-scenes/accounting.jpg"
+import accountingVideo from "../../assets/product-scenes/accounting.mp4"
+import accountingObliqueVideo from "../../assets/product-scenes/accounting-angle-oblique.mp4"
+import accountingDetailVideo from "../../assets/product-scenes/accounting-angle-detail.mp4"
 import expenseScene from "../../assets/product-scenes/expense.jpg"
+import expenseVideo from "../../assets/product-scenes/expense.mp4"
+import expenseOverShoulderVideo from "../../assets/product-scenes/expense-angle-over-shoulder.mp4"
+import expenseTabletopVideo from "../../assets/product-scenes/expense-angle-tabletop.mp4"
 import procurementScene from "../../assets/product-scenes/procurement.jpg"
+import procurementVideo from "../../assets/product-scenes/procurement.mp4"
+import procurementObliqueVideo from "../../assets/product-scenes/procurement-angle-oblique.mp4"
+import procurementDetailVideo from "../../assets/product-scenes/procurement-angle-detail.mp4"
 import invoicingScene from "../../assets/product-scenes/invoicing.jpg"
+import invoicingVideo from "../../assets/product-scenes/invoicing.mp4"
+import invoicingObliqueVideo from "../../assets/product-scenes/invoicing-billing-angle-oblique.mp4"
+import invoicingDetailVideo from "../../assets/product-scenes/invoicing-billing-angle-detail.mp4"
 import reportingScene from "../../assets/product-scenes/reporting.jpg"
+import reportingVideo from "../../assets/product-scenes/reporting.mp4"
+import reportingObliqueVideo from "../../assets/product-scenes/reporting-angle-oblique.mp4"
+import reportingDetailVideo from "../../assets/product-scenes/reporting-angle-detail.mp4"
 import aiFinanceScene from "../../assets/product-scenes/ai-finance.jpg"
+import aiFinanceVideo from "../../assets/product-scenes/ai-finance.mp4"
+import aiFinanceObliqueVideo from "../../assets/product-scenes/ai-financial-management-angle-oblique.mp4"
+import aiFinanceDetailVideo from "../../assets/product-scenes/ai-financial-management-angle-detail.mp4"
+import travelVideo from "../../assets/product-scenes/travel.mp4"
+import travelObliqueVideo from "../../assets/product-scenes/travel-angle-oblique.mp4"
+import travelDetailVideo from "../../assets/product-scenes/travel-angle-detail.mp4"
+import accountsVideo from "../../assets/product-scenes/accounts.mp4"
+import accountsObliqueVideo from "../../assets/product-scenes/accounts-angle-oblique.mp4"
+import accountsDetailVideo from "../../assets/product-scenes/accounts-angle-detail.mp4"
 import { productPages } from "../../content/products"
 
 const productScenes: Record<string, string> = {
@@ -21,6 +54,37 @@ const productScenes: Record<string, string> = {
   accounts: treasuryScene, treasury: treasuryScene, "stablecoin-ramp": stablecoinScene,
   accounting: accountingScene, procurement: procurementScene, "invoicing-billing": invoicingScene,
   reporting: reportingScene, "ai-financial-management": aiFinanceScene,
+}
+
+const productVideoAngles: Record<string, string[]> = {
+  payments: [paymentsVideo, paymentsObliqueVideo, paymentsDetailVideo],
+  expense: [expenseVideo, expenseOverShoulderVideo, expenseTabletopVideo],
+  travel: [travelVideo, travelObliqueVideo, travelDetailVideo],
+  accounts: [accountsVideo, accountsObliqueVideo, accountsDetailVideo],
+  treasury: [treasuryVideo, treasuryObliqueVideo, treasuryDetailVideo],
+  "stablecoin-ramp": [stablecoinVideo, stablecoinObliqueVideo, stablecoinDetailVideo],
+  accounting: [accountingVideo, accountingObliqueVideo, accountingDetailVideo],
+  procurement: [procurementVideo, procurementObliqueVideo, procurementDetailVideo],
+  "invoicing-billing": [invoicingVideo, invoicingObliqueVideo, invoicingDetailVideo],
+  reporting: [reportingVideo, reportingObliqueVideo, reportingDetailVideo],
+  "ai-financial-management": [aiFinanceVideo, aiFinanceObliqueVideo, aiFinanceDetailVideo],
+}
+
+function HeroSceneMedia({ image, videos, alt, className }: { image: string; videos: string[]; alt: string; className: string }) {
+  const [activeVideo, setActiveVideo] = useState(0)
+
+  return <video
+    key={videos[activeVideo]}
+    src={videos[activeVideo]}
+    poster={image}
+    aria-label={alt}
+    className={className}
+    autoPlay
+    muted
+    playsInline
+    preload="auto"
+    onEnded={() => setActiveVideo((activeVideo + 1) % videos.length)}
+  />
 }
 
 const heroLines: Record<string, [string, string]> = {
@@ -40,13 +104,14 @@ const heroLines: Record<string, [string, string]> = {
 export function ProductPage({ slug }: { slug: string }) {
   const product = productPages[slug] ?? productPages.payments
   const scene = productScenes[slug] ?? paymentsScene
+  const sceneVideos = productVideoAngles[slug] ?? productVideoAngles.payments
   const headline = heroLines[slug] ?? [product.headline, ""]
   const [openCapability, setOpenCapability] = useState(0)
   const related = product.related.map((relatedSlug) => ({ slug: relatedSlug, product: productPages[relatedSlug], image: productScenes[relatedSlug] ?? paymentsScene })).filter((item) => item.product)
 
   return <><Nav /><main id="top" className="product-editorial-page bg-[#eef3f6] text-[#111927]">
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#061e2a] px-5 pb-8 pt-28 text-white sm:px-8 lg:px-12 lg:pt-32">
-      <img src={scene} alt={`${product.name} in action`} className="inner-page-scene absolute inset-0 size-full object-cover" />
+      <HeroSceneMedia image={scene} videos={sceneVideos} alt={`${product.name} in action`} className="inner-page-scene absolute inset-0 size-full object-cover" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,42,.58)_0%,rgba(6,30,42,.18)_42%,rgba(6,30,42,.9)_100%)]" />
       <div className="relative z-10 mx-auto flex w-full max-w-[1500px] items-center justify-between text-[11px] font-semibold uppercase tracking-[.14em]"><span className="flex items-center gap-2"><i className="size-2 rounded-full bg-white" />{product.eyebrow} running on Hinstantt</span><span>{product.name} · 01</span></div>
       <div className="relative z-10 mx-auto flex w-full max-w-[1500px] flex-1 flex-col items-start justify-end pb-[clamp(2.25rem,8svh,7rem)] pt-[clamp(5.5rem,13svh,9rem)]"><h1 className="max-w-[1150px] font-serif text-[clamp(1.8rem,min(6vw,9svh),4.75rem)] font-light leading-[1.1] tracking-[-.042em] drop-shadow-[0_4px_30px_rgba(0,0,0,.35)]"><span className="block">{headline[0]}</span><span className="block">{headline[1]}</span></h1></div>

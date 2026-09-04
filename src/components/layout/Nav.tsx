@@ -49,6 +49,7 @@ function NavItemIcon({ label }: { label: string }) {
 export function Nav() {
   const [open, setOpen] = useState(false)
   const [detached, setDetached] = useState(false)
+  const isInnerPage = window.location.pathname !== "/"
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
@@ -65,9 +66,9 @@ export function Nav() {
   return (
     <>
       <header className={`fixed inset-x-0 z-[60] flex justify-center px-0 transition-[top] duration-500 ease-[var(--ease-out-soft)] sm:px-10 ${detached ? "top-3 sm:top-4" : "top-2 sm:top-3"}`}>
-        <div className={`relative grid h-[58px] w-full max-w-[230px] grid-cols-[1fr_48px] items-center bg-white text-ink transition-[border-radius,box-shadow] duration-500 ease-[var(--ease-out-soft)] sm:h-[68px] sm:max-w-[420px] sm:grid-cols-[1fr_auto_56px] ${detached ? "rounded-full shadow-[0_12px_40px_rgba(0,0,0,.16)]" : "rounded-b-[18px] shadow-[0_8px_24px_rgba(0,0,0,.08)] sm:rounded-b-[22px]"}`}>
-          <span aria-hidden="true" className={`nav-notch-left absolute -left-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />
-          <span aria-hidden="true" className={`nav-notch-right absolute -right-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />
+        <div className={`relative grid h-[58px] w-full max-w-[230px] grid-cols-[1fr_48px] items-center bg-white text-ink transition-[border-radius,box-shadow] duration-500 ease-[var(--ease-out-soft)] sm:h-[68px] sm:max-w-[420px] sm:grid-cols-[1fr_auto_56px] ${isInnerPage || detached ? "rounded-full shadow-[0_12px_40px_rgba(0,0,0,.16)]" : "rounded-b-[18px] shadow-[0_8px_24px_rgba(0,0,0,.08)] sm:rounded-b-[22px]"}`}>
+          {!isInnerPage && <span aria-hidden="true" className={`nav-notch-left absolute -left-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />}
+          {!isInnerPage && <span aria-hidden="true" className={`nav-notch-right absolute -right-8 top-0 size-8 transition-opacity duration-300 ${detached ? "opacity-0" : "opacity-100"}`} />}
           <a href={window.location.pathname === "/" ? "#top" : "/"} onClick={() => setOpen(false)} className="flex h-full items-center pl-5 sm:pl-6" aria-label={`${brand.name} home`}>
             <img src={logoDesign} alt={brand.name} className="h-3.5 w-auto brightness-0 sm:h-4" />
           </a>
